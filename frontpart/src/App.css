@@ -1,0 +1,162 @@
+.App {
+    background-color: aliceblue;
+    padding: 50px 0;
+}
+
+.offThis {
+    display: none;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.wrapper {
+    background-color: white;
+    margin-top: 50px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.header {
+    border-top: 1px solid lightgrey;
+    margin-top: 10vh;
+    display: flex;
+    color: lightgray;
+    justify-content: space-around;
+}
+
+#deleteClass {
+    color: rgba(234, 66, 66, 0.89);
+}
+
+.btnForCreate {
+    padding: 20px;
+    background-color: blue;
+    font-weight: bold;
+    position: absolute;
+    left: 76.5%;
+    top: 10%;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.btnForCreate:hover {
+    color: crimson;
+    transition: 700ms;
+    background-color: lightblue;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.content {
+    display: flex;
+    background-color: rgba(211, 211, 211, 0.76);
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.content > h5 {
+    width: 15%;
+    text-align: center;
+}
+
+/*   form styles  */
+
+.formContainer {
+    height: 100%;
+}
+
+.wrapForm {
+    position: absolute;
+    z-index: 5;
+    background-color: white;
+    width: 50%;
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 10%;
+}
+
+.form {
+    z-index: 5;
+    position: absolute;
+    background-color: lightcyan;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.formElement {
+    margin-top: 15px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    width: 90%;
+    background-color: rgba(142, 227, 169, 0.4);
+}
+
+.formElement:hover {
+    border: 3px solid lightcoral;
+    transition: 500ms;
+}
+
+#smallIncludes, #emailRequire {
+    color: crimson;
+    font-weight: bold;
+    font-size: 65%;
+}
+
+.hide {
+    display: none;
+}
+
+.wrapElementForm > h5 {
+    margin: 10px 0 0 0;
+}
+
+.createUserBtn {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.createUserBtn:hover {
+    background-color: lightblue;
+    color: crimson;
+    transition: 700ms;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    white-space: nowrap;
+    margin-top: 10px;
+    max-height: 40px;
+    background-color: rgba(255, 62, 62, 0.81);
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.deleteBtn:hover {
+    color: black;
+    transition: 700ms;
+    font-weight: normal;
+    cursor: pointer;
+    padding: 5px;
+}
