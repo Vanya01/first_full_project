@@ -1,19 +1,16 @@
 import axios from "axios";
 
-const URL = `http://localhost:5000/users`;
+const URL = `http://localhost:5000/products`;
 
-const getUsers = () => axios.get(URL);
+const getProducts = () => axios.get(URL);
 
-const postUsers = ({
-                       userName,
-                       firstName,
-                       lastName,
-                       email,
-                       userType,
-                       password
-                   }) => axios.post('http://localhost:5000/users',
+const postProduct = ({
+                         price,
+                         img,
+                         productName
+                     }) => axios.post('http://localhost:5000/products',
     {
-        body: JSON.stringify({userName, lastName, firstName, userType, email, password,}),
+        body: JSON.stringify({price,img,productName}),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
         },
@@ -21,26 +18,8 @@ const postUsers = ({
     .then((json) => console.log(json))
 
 
-
-
-const registration = ({userName, firstName, lastName, email, userType, password}) => {
-
-    fetch('http://localhost:5000/users', {
-        method: 'POST',
-        body: JSON.stringify({
-            userName, firstName, lastName, email, userType, password
-
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-        },
-    })
-        .then((response) => response.json())
-        .then((json) => console.log(json))
-}
-
-const deleteUser = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+const deleteProduct = (id) => {
+    fetch(`http://localhost:5000/products/${id}`, {
         method: 'DELETE'
     })
         .then((response) => response.json())
@@ -48,6 +27,6 @@ const deleteUser = (id) => {
 }
 
 
-export {getUsers, postUsers, registration, deleteUser};
+export {getProducts, postProduct, deleteProduct};
 
 

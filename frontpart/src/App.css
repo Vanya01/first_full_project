@@ -122,7 +122,7 @@
     margin: 10px 0 0 0;
 }
 
-.createUserBtn {
+.createProductBtn {
     display: flex;
     justify-content: center;
     width: 150px;
@@ -135,7 +135,7 @@
     margin-top: 20px;
 }
 
-.createUserBtn:hover {
+.createProductBtn:hover {
     background-color: lightblue;
     color: crimson;
     transition: 700ms;

@@ -3,22 +3,22 @@
   "info": {
     "title": "June 2021",
     "version": "1.0",
-    "description": "This is first swagger lesson",
+    "description": "This is swagger ",
     "contact": {
       "email": "good.boy.2k19@gmail.com",
-      "url": "here could be my github but it missed the meeting =)",
+      "url": "here could be my github but it lost =)",
       "name": "Vanya"
     }
   },
   "paths": {
-    "/users": {
+    "/products": {
       "get": {
         "tags": [
-          "Users"
+          "Products"
         ],
         "summary": "",
-        "operationId": "getAllUsers",
-        "description": "Returns data of all users",
+        "operationId": "getAllProdutcts",
+        "description": "Returns data of all products",
         "parameters": [
           {
             "name": "page",
@@ -34,36 +34,15 @@
       },
       "post": {
         "tags": [
-          "Users"
+          "Products"
         ],
-        "operationId": "CreateUser",
-        "description": "Create user",
+        "operationId": "CreateProduct",
+        "description": "Create product",
         "parameters": [
           {
             "name": "name",
             "in": "formData",
-            "default": "username",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "email",
-            "in": "formData",
-            "default": "user@email.com",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "formData",
-            "default": "password",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "role",
-            "in": "formData",
-            "default": "user",
+            "default": "productname",
             "required": true,
             "type": "string"
           }
