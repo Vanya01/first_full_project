@@ -1,24 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const rateLimit = require('express-rate-limit');
 const swaggerUI = require('swagger-ui-express');
-const helmet = require('helmet');
 const {MONGO_CONNECT_URL, PORT, NODE_ENV, ALLOWED_ORIGIN} = require('./configs/config');
 require('dotenv').config();
 
 mongoose.connect(MONGO_CONNECT_URL);
-const swaggerJSON = require('./docs/swagger.json')
-const userRouter = require('./router/user_router');
+const swaggerJSON = require('./docs/swagger.json');
+const productRouter = require('./router/product_router');
 const app = express();
 app.use(cors({origin: _configureCors}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON))
-app.use('/users', userRouter);
-app.use('/auth', userRouter);
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON));
+app.use('/products', productRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use('*', (err, req, res, next) => {

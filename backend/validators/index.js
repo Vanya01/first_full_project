@@ -1,3 +1,3 @@
 module.exports={
-    USERVALIDATOR: require('./user_validator')
+    PRODUCTVALIDATOR: require('./product_validator')
 };

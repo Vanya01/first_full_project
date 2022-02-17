@@ -1,30 +1,26 @@
 import './App.css';
 import {useEffect, useState} from "react";
-import {getUsers, deleteUser, registration, postUsers} from "./services/services";
+import {postProduct, deleteProduct, getProducts} from "./services/services";
 
 function App() {
-    const [users, setUsers] = useState([]);
+    const [products, setProducts] = useState([]);
     const [turnOn, setTurnOn] = useState('hide');
     const [turnOff, setTurnOff] = useState('show');
-    const [userName, setUserName] = useState('userName');
-    const [firstName, setFirstName] = useState('firstName');
-    const [lastName, setLastName] = useState('lastName');
-    const [email, setEmail] = useState('email');
-    const [password, setPassword] = useState('password');
+    const [productName, setProductName] = useState('productName');
+    const [price, setPrice] = useState('price');
+    const [img, setImg] = useState('img');
 
     const empty = {};
 
-    const onSubmitForm = (e) => {
-        let tempUser = {userName, lastName, firstName, email, password};
+    const onSubmitForm = () => {
 
-        setUserName({...tempUser});
-        setFirstName({...tempUser});
-        setLastName({...tempUser});
-        setEmail({...tempUser});
-        setPassword({...tempUser});
+        let tempProduct = {productName, img, price};
 
-        registration(tempUser)
+        setProductName({...tempProduct});
+        setPrice({...tempProduct});
+        setImg({...tempProduct});
     }
+
 
     const showForm = () => {
         if (turnOn === 'hide') {
@@ -39,54 +35,39 @@ function App() {
         }
     }
 
-    const onInputUserName = (e) => {
+    const onInputProductName = (e) => {
         e.preventDefault();
 
-        let userName = e.target.value;
-        setUserName(userName);
+        let productName = e.target.value;
+        setProductName(productName);
 
-        empty.userName = userName;
+        empty.productName = productName;
     }
-    const onInputFirstName = (e) => {
+    const onInputPrice = (e) => {
         e.preventDefault();
 
-        let firstName = e.target.value;
-        setFirstName(firstName);
+        let price = e.target.value;
 
-        empty.firstName = firstName;
+        setPrice(price);
+
+        empty.price = price;
     }
     const onInputLastName = (e) => {
         e.preventDefault();
 
-        let lastName = e.target.value;
-        setLastName(lastName);
+        let img = e.target.value;
+        setImg(img);
 
-        empty.lastName = lastName;
-    }
-    const onInputEmail = (e) => {
-        e.preventDefault();
-
-        let email = e.target.value;
-        setEmail(email);
-
-        empty.email = email;
-    }
-    const onInputPassword = (e) => {
-        e.preventDefault();
-
-        let password = e.target.value;
-        setPassword(password);
-
-        empty.password = password;
+        empty.img = img;
     }
 
     useEffect(() => {
-        getUsers().then(value => setUsers([...value.data]))
+        getProducts().then(value => setProducts([...value.data]))
     }, []);
 
-    const removeUser = (id) => {
-        deleteUser(id);
-        users.filter((item) => item.id !== id);
+    const removeProduct = (id) => {
+        deleteProduct(id);
+        products.filter((item) => item.id !== id);
     }
 
     return (
@@ -95,64 +76,41 @@ function App() {
 
                 <form className={'form'} onSubmit={onSubmitForm}>
                     <div className="wrapForm">
-                        <h3> Create a new User ↓</h3>
+                        <h3> Create a new Product ↓</h3>
 
                         <span className="wrapElementForm">
-                                                <h5>User name</h5>
-
+                                                <h5>Product name</h5>
                                                 <input
                                                     className={'formElement'}
                                                     type="text"
-                                                    placeholder={'User name . . .'}
-                                                    onInput={onInputUserName}
+                                                    placeholder={'Product name . . .'}
+                                                    onInput={onInputProductName}
                                                 />
                                             </span>
 
                         <span className="wrapElementForm">
-                                                <h5>First name*</h5>
+                                                <h5>Price</h5>
 
                                                 <input
                                                     className={'formElement'}
                                                     type="text"
-                                                    placeholder={'First name . . .'}
-                                                    onInput={onInputFirstName}
+                                                    placeholder={'price . . .'}
+                                                    onInput={onInputPrice}
                                                 />
                                             </span>
 
                         <span className="wrapElementForm">
-                                                <h5>Last name*</h5>
+                                                <h5>Image</h5>
 
                                                 <input
                                                     className={'formElement'}
                                                     type="text"
-                                                    placeholder={'Last name . . .'}
+                                                    placeholder={'image . . .'}
                                                     onInput={onInputLastName}
                                                 />
                                             </span>
 
-                        <span className="wrapElementForm">
-                                                <h5>Email*</h5> <small id={'emailRequire'}>*Require @</small> <br/>
-
-                                                <input
-                                                    className={'formElement'}
-                                                    type="text"
-                                                    placeholder={'Email . . .'}
-                                                    onInput={onInputEmail}
-                                                />
-                                            </span>
-
-                        <span className="wrapElementForm">
-                                                <h5>Password*</h5> <small id={'smallIncludes'}>*Require a number and a Big letter </small>
-
-                                                <input
-                                                    className={'formElement'}
-                                                    type="password"
-                                                    placeholder={'Password . . .'}
-                                                    onInput={onInputPassword}
-                                                />
-                                            </span>
-
-                        <button className={`createUserBtn`}>Create and refresh</button>
+                        <button className={`createProductBtn`}>Create and refresh</button>
 
                     </div>
                 </form>
@@ -163,30 +121,27 @@ function App() {
 
                 <div className={`wrapper container`}>
 
-                    <button className={'btnForCreate'} onClick={showForm}> Create an user</button>
+                    <button className={'btnForCreate'} onClick={showForm}> Create a product</button>
 
                     <div className={`header`}>
-                        <h3>USERNAME</h3>
-                        <h3>FIRST NAME</h3>
-                        <h3>LAST NAME</h3>
-                        <h3>EMAIL</h3>
-                        <h3>TYPE</h3>
-                        <h3 id={'deleteClass'}>DELETE</h3>
+                        <h4>PRODUCT_NAME</h4>
+                        <h4>PRICE</h4>
+                        <h4>COUNT</h4>
+                        <h4>TYPE</h4>
+                        <h4 id={'deleteClass'}>DELETE</h4>
                     </div>
 
                     <div className={`main`}>
                         {
-                            users.map(user => {
+                            products.map(product => {
 
                                 return (
-                                    <div key={user.id} className="content">
-                                        <h5>{user.userName}</h5>
-                                        <h5>{user.firstName}</h5>
-                                        <h5>{user.lastName}</h5>
-                                        <h5>{user.email}</h5>
-                                        <h5>{user.userType}</h5>
-                                        <button className={'deleteBtn'} onClick={() => removeUser(user.id)}> Delete the
-                                            user
+                                    <div key={product.id} className="content">
+                                        <h5>{product.productName}</h5>
+                                        <h5>{product.price}</h5>
+                                        <h5>{product.img}</h5>
+                                        <button className={'deleteBtn'}
+                                                onClick={() => removeProduct(product.id)}> Delete the product
                                         </button>
                                     </div>
                                 )

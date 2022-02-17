@@ -1,3 +1,3 @@
 module.exports = {
-    userRoute: require('./user_router')
+    productRoute: require('./product_router')
 };
